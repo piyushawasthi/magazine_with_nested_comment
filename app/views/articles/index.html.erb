@@ -48,7 +48,8 @@
         <% if comment.leaf? %>
           <small class="text-muted">There are no replies yet - be the first one to reply!</small>
         <% end %>
-        <p><%= link_to 'reply', new_comment_path(comment.id) %></p>
+        <p><%#= link_to 'reply', new_comment_path(comment.id) %></p>
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Reply</button>
       <% end %>
     </div>
     <%#= comments_tree_for comment %>
@@ -79,3 +80,31 @@
 <% end %>
 
 
+
+<!-- Trigger the modal with a button -->
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for @comment do |f| %>
+          <%#= f.input :article_id ,:as=> :hidden, :input_html => {:value => article.id} %>
+          <%= f.input :comment, label:'Add Comment' %>
+          <%= f.button :submit, "Add Comment",:class => 'btn-primary' %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>

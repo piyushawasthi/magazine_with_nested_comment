@@ -22,6 +22,7 @@ gem 'closure_tree'
 gem 'ckeditor', '~> 4.0', '>= 4.0.8'
 
 group :development do
+  gem 'pry-byebug'
   gem 'hub', :require=>nil
   gem 'rails_layout'
 end

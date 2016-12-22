@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
 
   def create
   	#Clicking "Create Comment" transferes control here
+    binding.pry
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
       @comment = parent.children.build(comment_params)
